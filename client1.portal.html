@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>FlowMagik | Client 1 Portal</title>
+  <link rel="stylesheet" href="assets/style.css"/>
+</head>
+<body>
+  <div class="container">
+    <header class="nav">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>Client 1 Portal</div>
+      </div>
+      <nav class="navlinks">
+        <a href="index.html">Home</a>
+        <a href="portal.html">Switch client</a>
+      </nav>
+      <button class="btn" id="logoutBtn" type="button">Log out</button>
+    </header>
+
+    <section class="hero" style="grid-template-columns:1fr 1fr;">
+      <div>
+        <h1 class="h-title" style="font-size:34px;">Workspace</h1>
+        <p class="h-sub">
+          Welcome, <span id="who" style="color:rgba(46,233,255,0.85); font-weight:700;">—</span>.
+          This is a placeholder client dashboard. Replace these tiles with your real portal modules later.
+        </p>
+
+        <div class="grid3" style="margin-top:16px;">
+          <div class="card p item">
+            <div class="pill">Queue</div>
+            <h3 style="margin-top:12px;">Inbound Requests</h3>
+            <p>Track items waiting for review, missing info, or approvals.</p>
+            <div style="margin-top:12px;">
+              <a class="btn" href="#" aria-disabled="true">Open</a>
+            </div>
+          </div>
+
+          <div class="card p item">
+            <div class="pill">Documents</div>
+            <h3 style="margin-top:12px;">Templates & Files</h3>
+            <p>Centralized documents, version control, and export-ready outputs.</p>
+            <div style="margin-top:12px;">
+              <a class="btn" href="#" aria-disabled="true">Open</a>
+            </div>
+          </div>
+
+          <div class="card p item">
+            <div class="pill">Settings</div>
+            <h3 style="margin-top:12px;">Client Configuration</h3>
+            <p>Enable modules, adjust guardrails, and configure workflows.</p>
+            <div style="margin-top:12px;">
+              <a class="btn" href="#" aria-disabled="true">Open</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="cta">
+          <h3>Next step</h3>
+          <p>
+            When you connect the real portal (via Cloudflare Tunnel + Access), this page can either:
+            (1) redirect to <b>client1.portal.flowmagik.com</b>, or
+            (2) become the portal itself (multi-tenant).
+          </p>
+          <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:12px">
+            <a class="btn primary" href="portal.html">Back to login</a>
+            <a class="btn" href="index.html">Back to website</a>
+          </div>
+        </div>
+      </div>
+
+      <aside class="card p">
+        <div class="kpi">
+          <div class="t">Environment</div>
+          <div class="v">Client 1</div>
+          <div class="d">Demo dashboard (static)</div>
+        </div>
+        <hr class="sep"/>
+        <div class="kpi">
+          <div class="t">Access</div>
+          <div class="v">Controlled</div>
+          <div class="d">Use Cloudflare Access for real authentication</div>
+        </div>
+        <hr class="sep"/>
+        <div class="tiny">
+          This page is safe to publish publicly because it contains no real data.
+          Once the real portal is connected, remove this placeholder or keep it as a landing dashboard.
+        </div>
+      </aside>
+    </section>
+
+    <footer class="footer">© 2026 FlowMagik. All rights reserved.</footer>
+  </div>
+
+  <script>
+    // Show "logged in" username from portal.html demo
+    const who = document.getElementById("who");
+    const u = sessionStorage.getItem("portal_user");
+    who.textContent = u ? u : "Guest";
+
+    // Demo logout
+    document.getElementById("logoutBtn").addEventListener("click", () => {
+      sessionStorage.removeItem("portal_user");
+      window.location.href = "portal.html";
+    });
+  </script>
+</body>
+</html>
